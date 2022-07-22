@@ -3,14 +3,16 @@ import 'package:intl/intl.dart';
 import 'package:note_app/constants.dart';
 import 'package:note_app/view/detailPage.dart';
 
-Widget buildNote(
-    String title, String content, DateTime dateTime, BuildContext context) {
+Widget buildNote(String id, String title, String content, DateTime dateTime,
+    Color color, BuildContext context) {
   String formattedDate = DateFormat('MMMM dd, yyyy').format(dateTime);
+
   return InkWell(
     onTap: () => Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => DetailPage(
+                id: id,
                 title: title,
                 content: content,
                 dateTime: formattedDate,
@@ -18,10 +20,9 @@ Widget buildNote(
     ),
     child: Container(
       decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.all(Radius.circular(12))),
+          color: color, borderRadius: BorderRadius.all(Radius.circular(12))),
       child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -37,6 +38,7 @@ Widget buildNote(
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     formattedDate,
+                    style: datestyle,
                   ),
                 ),
               )

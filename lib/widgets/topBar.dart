@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TopBar extends StatelessWidget {
@@ -13,18 +14,28 @@ class TopBar extends StatelessWidget {
       elevation: 0,
       floating: true,
       title: Text(
-        "Notes",
+        "Notlarım",
         style: GoogleFonts.bellotaText(
             fontSize: 35,
             color: Color(0xFFEEEEEE),
             fontWeight: FontWeight.bold),
       ),
       actions: [
-        Icon(
-          Icons.search,
-          color: Color(0xFFEEEEEE),
-          size: 30,
-        ),
+        Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Color.fromARGB(255, 47, 53, 65)),
+            child: Padding(
+              padding: const EdgeInsets.all(2),
+              child: IconButton(
+                onPressed: () {},
+                icon: FaIcon(
+                  FontAwesomeIcons.magnifyingGlass,
+                  color: Color(0xFFEEEEEE),
+                  size: 20,
+                ),
+              ),
+            )),
       ],
     );
   }

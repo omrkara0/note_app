@@ -5,11 +5,13 @@ import 'package:note_app/widgets/topBar.dart';
 import '../widgets/detailTopBar.dart';
 
 class DetailPage extends StatelessWidget {
+  String id;
   String title;
   String content;
   String dateTime;
   DetailPage(
       {Key? key,
+      required this.id,
       required this.title,
       required this.content,
       required this.dateTime})
@@ -24,9 +26,12 @@ class DetailPage extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              DetailedTopBar(),
+              DetailedTopBar(
+                id: id,
+              ),
               Expanded(
                 child: ListView(
+                  physics: BouncingScrollPhysics(),
                   padding: EdgeInsets.symmetric(vertical: 20),
                   children: [
                     Text(
@@ -38,7 +43,9 @@ class DetailPage extends StatelessWidget {
                       child: Text(dateTime, style: titleStyle2),
                     ),
                     Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut porta neque. Pellentesque ac gravida ex. Fusce vitae imperdiet odio. Quisque ornare lacinia consequat. Integer vel arcu neque. Nulla ac leo nisl. Quisque quis diam eget tortor elementum consequat at et lacus. Curabitur tortor risus, feugiat non mattis tincidunt, elementum sit amet tellus. Aenean hendrerit turpis mi, a gravida risus congue nec. Duis iaculis fermentum libero, a porta est tincidunt eget. Ut ultrices consequat odio quis iaculis. Quisque ut leo molestie, maximus erat vitae, varius dui. Curabitur quis sollicitudin ma")
+                      content,
+                      style: contentStyle,
+                    )
                   ],
                 ),
               )

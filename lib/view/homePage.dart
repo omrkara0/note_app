@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/constants.dart';
@@ -41,7 +42,29 @@ class HomePage extends StatelessWidget {
                           child: Text("${snapshot.error}"),
                         );
                       }
+
                       if (snapshot.hasData) {
+                        if (snapshot.data!.docs.isEmpty) {
+                          return Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.commentDots,
+                                  size: 50,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Text(
+                                  "Hadi bir not ekle !",
+                                  style: titleStyle2,
+                                )
+                              ],
+                            ),
+                          );
+                        }
                         return StaggeredGridView.countBuilder(
                             physics: BouncingScrollPhysics(),
                             crossAxisCount: 2,
@@ -49,11 +72,14 @@ class HomePage extends StatelessWidget {
                             mainAxisSpacing: 15,
                             itemCount: snapshot.data!.docs.length,
                             itemBuilder: (context, index) {
+                              colorlist.shuffle();
                               return buildNote(
+                                  snapshot.data!.docs[index].id,
                                   snapshot.data!.docs[index]["title"],
                                   snapshot.data!.docs[index]["content"],
                                   snapshot.data!.docs[index]["datetime"]
                                       .toDate(),
+                                  colorlist[0],
                                   context);
                             },
                             staggeredTileBuilder: (index) {
