@@ -7,6 +7,7 @@ final titleStyle_small = GoogleFonts.poppins(fontSize: 28, color: Colors.white);
 final titleStyle2 = GoogleFonts.poppins(fontSize: 15, color: Colors.white70);
 final contentStyle = GoogleFonts.poppins(fontSize: 18, color: Colors.white);
 final datestyle = GoogleFonts.poppins(fontSize: 15);
+final savestyle = GoogleFonts.poppins(fontSize: 15, color: Colors.white);
 
 List<Color> colorlist = [
   Color(0xFFD4F6CC),

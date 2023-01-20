@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
+
 import 'package:note_app/constants.dart';
 import 'package:note_app/view/detailPage.dart';
 
 Widget buildNote(String id, String title, String content, DateTime dateTime,
     Color color, BuildContext context) {
-  String formattedDate = DateFormat('MMMM dd, yyyy').format(dateTime);
+  String formattedDate =
+      DateFormat('MMMM dd, yyyy', Intl.systemLocale).format(dateTime);
 
   return InkWell(
     onTap: () => Navigator.push(

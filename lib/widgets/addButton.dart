@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/view/addPage.dart';
 
 class AddButton extends StatelessWidget {
   const AddButton({
@@ -9,7 +10,12 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       backgroundColor: Colors.black,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AddPage()),
+        );
+      },
       child: Icon(Icons.add_sharp, size: 30),
     );
   }
